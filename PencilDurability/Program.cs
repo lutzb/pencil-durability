@@ -2,11 +2,11 @@
 
 namespace PencilDurability
 {
-    class Program
+    class UserInteraction
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello. I'm going to interact with a pencil!");
         }
     }
 }
