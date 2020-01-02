@@ -114,5 +114,18 @@ namespace PencilDurability.test
 
             Assert.AreEqual(expected, paper);
         }
+
+        [Test]
+        public void Erase_OnlyReplacesLastOccurenceOfText()
+        {
+            var subject = new Pencil(50, 1);
+            var paper = "Greetings, welcome to earth, earthling";
+            var textToErase = "earth";
+            var expected = "Greetings, welcome to earth,      ling";
+
+            subject.Erase(ref paper, textToErase);
+
+            Assert.AreEqual(expected, paper);
+        }
     }
 }

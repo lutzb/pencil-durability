@@ -1,6 +1,7 @@
 namespace PencilDurability
 {
     using System.Linq;
+    using System.Text.RegularExpressions;
 
     public class Pencil
     {
@@ -36,6 +37,12 @@ namespace PencilDurability
                 }
             });
             paper = currentPaper;
+        }
+
+        public void Erase(ref string paper, string textToErase)
+        {
+            var pattern = $"({textToErase})(?!.*\\1)";
+            paper = Regex.Replace(paper, pattern, Regex.Replace(textToErase, ".", " "));
         }
 
         public void Sharpen()
