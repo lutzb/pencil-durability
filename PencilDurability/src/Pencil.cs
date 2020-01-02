@@ -20,14 +20,7 @@ namespace PencilDurability
                 {
                     currentPaper += c;
 
-                    if (char.IsUpper(c))
-                    {
-                        point -= 2;
-                    }
-                    else
-                    {
-                        point--;
-                    }
+                    DegradePointDurability(c);
                 }
                 else if (c.Equals('\n'))
                 {
@@ -39,6 +32,18 @@ namespace PencilDurability
                 }
             });
             paper = currentPaper;
+        }
+
+        private void DegradePointDurability(char c)
+        {
+            if (char.IsUpper(c))
+            {
+                point -= 2;
+            }
+            else
+            {
+                point--;
+            }
         }
     }
 }
