@@ -10,10 +10,12 @@ namespace PencilDurability.test
         {
             var subject = new Pencil(50);
             var paper = "She sells sea shells";
+            var testToWrite = " down by the sea shore.";
+            var expected = "She sells sea shells down by the sea shore.";
 
-            subject.Write(ref paper, " down by the sea shore.");
+            subject.Write(ref paper, testToWrite);
 
-            Assert.AreEqual("She sells sea shells down by the sea shore.", paper);
+            Assert.AreEqual(expected, paper);
         }
 
         [Test]
@@ -21,10 +23,12 @@ namespace PencilDurability.test
         {
             var subject = new Pencil(5);
             var paper = "";
+            var textToWrite = "12345678";
+            var expected = "12345   ";
 
-            subject.Write(ref paper, "12345678");
+            subject.Write(ref paper, textToWrite);
 
-            Assert.AreEqual("12345   ", paper);
+            Assert.AreEqual(expected, paper);
         }
 
         [Test]
@@ -32,10 +36,27 @@ namespace PencilDurability.test
         {
             var subject = new Pencil(5);
             var paper = "";
+            var textToWrite = "123 45678";
+            var expected = "123 45   ";
 
-            subject.Write(ref paper, "123 45678");
+            subject.Write(ref paper, textToWrite);
 
-            Assert.AreEqual("123 45   ", paper);
+            Assert.AreEqual(expected, paper);
+        }
+
+        [Test]
+        public void Write_DoesNotLosePointDurabilityForNewlineCharacters()
+        {
+            var subject = new Pencil(5);
+            var paper = "";
+            var textToWrite = @"123
+            45678";
+            var expected = @"123
+            45   ";
+
+            subject.Write(ref paper, textToWrite);
+
+            Assert.AreEqual(expected, paper);
         }
     }
 }

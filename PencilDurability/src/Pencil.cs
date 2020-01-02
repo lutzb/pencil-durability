@@ -1,6 +1,5 @@
 namespace PencilDurability
 {
-    using System;
     using System.Linq;
 
     public class Pencil
@@ -24,7 +23,14 @@ namespace PencilDurability
                 }
                 else
                 {
-                    currentPaper += " ";
+                    if (c.Equals('\n'))
+                    {
+                        currentPaper += c;
+                    }
+                    else
+                    {
+                        currentPaper += " ";
+                    }
                 }
             });
             paper = currentPaper;
