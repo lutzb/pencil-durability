@@ -26,5 +26,16 @@ namespace PencilDurability.test
 
             Assert.AreEqual("12345   ", paper);
         }
+
+        [Test]
+        public void Write_DoesNotLosePointDurabilityForSpaceCharacters()
+        {
+            var subject = new Pencil(5);
+            var paper = "";
+
+            subject.Write(ref paper, "123 45678");
+
+            Assert.AreEqual("123 45   ", paper);
+        }
     }
 }

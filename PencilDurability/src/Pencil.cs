@@ -1,5 +1,6 @@
 namespace PencilDurability
 {
+    using System;
     using System.Linq;
 
     public class Pencil
@@ -16,7 +17,7 @@ namespace PencilDurability
             var currentPaper = paper;
             textToWrite.ToList().ForEach(c =>
             {
-                if (point > 0)
+                if (point > 0 && !char.IsWhiteSpace(c))
                 {
                     currentPaper += c;
                     point--;
