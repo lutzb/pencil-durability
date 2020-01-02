@@ -21,16 +21,13 @@ namespace PencilDurability
                     currentPaper += c;
                     point--;
                 }
+                else if (c.Equals('\n'))
+                {
+                    currentPaper += c;
+                }
                 else
                 {
-                    if (c.Equals('\n'))
-                    {
-                        currentPaper += c;
-                    }
-                    else
-                    {
-                        currentPaper += " ";
-                    }
+                    currentPaper += " ";
                 }
             });
             paper = currentPaper;
