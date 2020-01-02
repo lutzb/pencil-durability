@@ -71,5 +71,24 @@ namespace PencilDurability.test
 
             Assert.AreEqual(expected, paper);
         }
+
+        [Test]
+        public void Sharpen_RefreshesPointDurabilityToTheOriginalPointDurability()
+        {
+            var subject = new Pencil(5);
+            var paper = "";
+            var textToWrite = "12345";
+
+            subject.Write(ref paper, textToWrite);
+            subject.Sharpen();
+
+            textToWrite = "67890";
+
+            subject.Write(ref paper, textToWrite);
+
+            var expected = "1234567890";
+
+            Assert.AreEqual(expected, paper);
+        }
     }
 }

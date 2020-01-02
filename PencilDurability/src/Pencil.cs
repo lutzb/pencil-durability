@@ -4,11 +4,13 @@ namespace PencilDurability
 
     public class Pencil
     {
+        private readonly int initialPointDurability;
         private int point;
 
         public Pencil(int pointDurability)
         {
             point = pointDurability;
+            initialPointDurability = pointDurability;
         }
 
         public void Write(ref string paper, string textToWrite)
@@ -34,16 +36,14 @@ namespace PencilDurability
             paper = currentPaper;
         }
 
+        public void Sharpen()
+        {
+            point = initialPointDurability;
+        }
+
         private void DegradePointDurability(char c)
         {
-            if (char.IsUpper(c))
-            {
-                point -= 2;
-            }
-            else
-            {
-                point--;
-            }
+            point -= char.IsUpper(c) ? 2 : 1;
         }
     }
 }
