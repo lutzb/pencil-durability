@@ -2,11 +2,9 @@ namespace PencilDurability
 {
     public class Pencil
     {
-        public Pencil() { }
-
-        public string HelloWorld()
+        public void Write(ref string paper, string textToWrite)
         {
-            return "Hello World";
+            paper += textToWrite;
         }
     }
 }

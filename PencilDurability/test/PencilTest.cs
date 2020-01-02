@@ -6,13 +6,14 @@ namespace PencilDurability.test
     public class PencilTest
     {
         [Test]
-        public void HelloWorld_ReturnsHelloWorld()
+        public void Write_WhenGivenPaper_AppendsTextToTheEndOfThePaper()
         {
             var subject = new Pencil();
+            var paper = "She sells sea shells";
 
-            var actual = subject.HelloWorld();
+            subject.Write(ref paper, " down by the sea shore.");
 
-            Assert.AreEqual("Hello World", actual);
+            Assert.AreEqual("She sells sea shells down by the sea shore.", paper);
         }
     }
 }
