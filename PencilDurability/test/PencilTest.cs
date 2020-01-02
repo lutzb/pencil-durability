@@ -58,5 +58,18 @@ namespace PencilDurability.test
 
             Assert.AreEqual(expected, paper);
         }
+
+        [Test]
+        public void Write_ReducesPencilPointDurabilityBy2ForCapitalLetters()
+        {
+            var subject = new Pencil(10);
+            var paper = "";
+            var textToWrite = "Hello World";
+            var expected = "Hello Wor  ";
+
+            subject.Write(ref paper, textToWrite);
+
+            Assert.AreEqual(expected, paper);
+        }
     }
 }

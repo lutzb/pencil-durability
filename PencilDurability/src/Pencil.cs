@@ -19,7 +19,15 @@ namespace PencilDurability
                 if (point > 0 && !char.IsWhiteSpace(c))
                 {
                     currentPaper += c;
-                    point--;
+
+                    if (char.IsUpper(c))
+                    {
+                        point -= 2;
+                    }
+                    else
+                    {
+                        point--;
+                    }
                 }
                 else if (c.Equals('\n'))
                 {
