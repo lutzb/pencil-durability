@@ -6,11 +6,13 @@ namespace PencilDurability
     {
         private readonly int initialPointDurability;
         private int point;
+        private int length;
 
-        public Pencil(int pointDurability)
+        public Pencil(int pointDurability, int length)
         {
-            point = pointDurability;
-            initialPointDurability = pointDurability;
+            this.initialPointDurability = pointDurability;
+            this.point = pointDurability;
+            this.length = length;
         }
 
         public void Write(ref string paper, string textToWrite)
@@ -18,7 +20,7 @@ namespace PencilDurability
             var currentPaper = paper;
             textToWrite.ToList().ForEach(c =>
             {
-                if (point > 0 && !char.IsWhiteSpace(c))
+                if (this.point > 0 && !char.IsWhiteSpace(c))
                 {
                     currentPaper += c;
 
@@ -38,12 +40,16 @@ namespace PencilDurability
 
         public void Sharpen()
         {
-            point = initialPointDurability;
+            if (this.length > 0)
+            {
+                this.point = this.initialPointDurability;
+                this.length--;
+            }
         }
 
         private void DegradePointDurability(char c)
         {
-            point -= char.IsUpper(c) ? 2 : 1;
+            this.point -= char.IsUpper(c) ? 2 : 1;
         }
     }
 }
